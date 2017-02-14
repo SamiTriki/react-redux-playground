@@ -1,6 +1,6 @@
 export const ADD_TODO = 'ADD_TODO'
 export const TOGGLE_TODO = 'TOGGLE_TODO'
-export const REMOVE_TODO = 'REMOVE_TODO'
+export const TODOS_REMOVECOMPLETED = 'TODOS:REMOVECOMPLETED'
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
 
@@ -25,9 +25,8 @@ export const toggleTodo = index => ({
     index
 })
 
-export const deleteTodo = index => ({
-    type: REMOVE_TODO,
-    index
+export const clearCompletedTodos = index => ({
+    type: TODOS_REMOVECOMPLETED
 })
 
 export const setVisibilityFilter = filter => ({

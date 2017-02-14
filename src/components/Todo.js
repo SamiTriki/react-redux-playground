@@ -42,7 +42,6 @@ const Todo = ({ onClick, completed, text, created, onDelete}) => {
                 {text}
                 <span style={{fontSize: 12, color: "#CCC"}} > - {formatDate(created)}</span>
             </span>
-            <span onClick={onDelete}> x</span>
         </div>
     )
 }
@@ -51,7 +50,6 @@ Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired
 }
 
 export default Radium(Todo)

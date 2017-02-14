@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTodo, deleteTodo } from '../Actions'
+import { toggleTodo, clearCompletedTodos } from '../Actions'
 import TodoList from '../components/TodoList'
 
 const getVisibleTodos = (todos, filter) => {
@@ -26,7 +26,7 @@ const mapDispatchToProps = (dispatch) => {
     onTodoClick: (id) => {
       dispatch(toggleTodo(id))
     },
-    onTodoDelete: id => dispatch(deleteTodo(id))
+    onClearCompletedTodos: _ => dispatch(clearCompletedTodos())
   }
 }
 
