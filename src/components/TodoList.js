@@ -13,7 +13,7 @@ const TodoList = ({ todos, onTodoClick, onTodoDelete }) => {
     )(todos)
 
     return (
-        <ul>
+        <div>
             {
             map(todos, todo =>
                 <Todo
@@ -22,9 +22,10 @@ const TodoList = ({ todos, onTodoClick, onTodoDelete }) => {
                     onClick={() => onTodoClick(todo.id)}
                     onDelete={() => onTodoDelete(todo.id)}
                 />
+
             )
             }
-        </ul>
+        </div>
     )
 }
 

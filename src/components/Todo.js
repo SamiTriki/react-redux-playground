@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Radium from 'radium'
 
 function formatDate(timestamp) {
     let date = new Date(timestamp);
@@ -12,20 +13,39 @@ function formatDate(timestamp) {
     return  `${day}/${month}/${year} ${hours}:${minutes.substr(-2)}:${seconds.substr(-2)}`
 }
 
-const Todo = ({ onClick, completed, text, created, onDelete}) => (
-    <div>
-        <span
-            onClick={onClick}
-            style={{
-                textDecoration: completed ? 'line-through' : 'none'
-            }}
-        >
-            {text}
-            <span style={{fontSize: 12, color: "#CCC"}} > - {formatDate(created)}</span>
-        </span>
-        <span onClick={onDelete}> x</span>
-    </div>
-)
+const getStyles = completed => ({
+    base: {
+        border: "0px",
+        padding: "10px 0px",
+        cursor: "pointer",
+        fontSize: "1rem",
+        fontWeight: 700,
+        color: "#555",
+        display: 'block',
+        textTransform: 'capitalize',
+        ":hover": {
+            backgroundColor: '#f1f1f1'
+        }
+    },
+    completed: {
+        textDecoration: 'line-through',
+        opacity: .4,
+    }
+})
+
+const Todo = ({ onClick, completed, text, created, onDelete}) => {
+    const style = getStyles()
+
+    return (
+        <div onClick={onClick} style={[style.base, completed ? style.completed: {}]}>
+            <span>
+                {text}
+                <span style={{fontSize: 12, color: "#CCC"}} > - {formatDate(created)}</span>
+            </span>
+            <span onClick={onDelete}> x</span>
+        </div>
+    )
+}
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
@@ -34,4 +54,4 @@ Todo.propTypes = {
   onDelete: PropTypes.func.isRequired
 }
 
-export default Todo
+export default Radium(Todo)
