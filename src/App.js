@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 
 const App = () => (
-  <div>
+  <div style={{margin: "0 auto", maxWidth: "900px"}}>
     <AddTodo />
     <VisibleTodoList />
     <Footer />
