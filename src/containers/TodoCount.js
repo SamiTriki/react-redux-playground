@@ -5,7 +5,6 @@ import filter from 'lodash/fp/filter'
 const getCount = (state, ownProps) => {
     if (!state.todos) return 0
 
-    let count
     switch(ownProps.type) {
         case "ALL":
             return state.todos.length

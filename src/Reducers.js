@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux'
 import { VisibilityFilters } from './Actions'
 import {ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, TODOS_REMOVECOMPLETED} from './Actions'
-import findIndex from 'lodash/findIndex'
 import map from 'lodash/map'
 import reject from 'lodash/reject'
 
@@ -42,8 +41,7 @@ function todos(state = [], action) {
         case TOGGLE_TODO:
             return map(state, t => todo(t, action))
         case TODOS_REMOVECOMPLETED:
-                return reject(state, t => t.completed)
-            return
+            return reject(state, t => t.completed)
         default:
             return state
     }

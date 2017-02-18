@@ -1,17 +1,8 @@
 import React, { PropTypes } from 'react'
 import Todo from './Todo'
 import map from "lodash/map"
-import reverse from "lodash/fp/reverse"
-import sortBy from "lodash/fp/sortBy"
-import flow from "lodash/fp/flow"
 
 const TodoList = ({ todos, onTodoClick, onClearCompletedTodos }) => {
-
-    todos = flow(
-        reverse,
-        sortBy(todos)(t=>t.created),
-    )(todos)
-
     return (
         <div>
             <button onClick={onClearCompletedTodos}>Clear completed</button>
