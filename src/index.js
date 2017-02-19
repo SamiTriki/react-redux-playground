@@ -9,6 +9,12 @@ import createLogger from 'redux-logger'
 import {saveState, loadState} from "./utils/localstorage"
 import throttle from 'lodash/throttle'
 
+if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/service-worker.js');
+    });
+}
+
 const logger = createLogger()
 let store = createStore(todoApp, loadState(), applyMiddleware(logger))
 
